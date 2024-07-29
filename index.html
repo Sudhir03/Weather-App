@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <main>
+      <div class="header">
+        <input type="text" id="location" />
+        <i class="fa-solid fa-magnifying-glass" id="search"></i>
+      </div>
+
+      <div class="container">
+        <span id="temperature">29</span>
+        <span class="unit">&deg;C</span>
+        <p id="summary">Mostly cloudy</p>
+        <p id="day-summary">Feels like <span id="feels-like">36</span>&deg;C</p>
+      </div>
+    </main>
+  </body>
+</html>
