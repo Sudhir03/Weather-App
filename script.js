@@ -8,10 +8,18 @@ const summary = document.getElementById("summary");
 const feelsLike = document.getElementById("feels-like");
 
 const currentPosition = function () {
-  navigator.geolocation.getCurrentPosition((res) => {
-    const para = [res.coords.latitude, res.coords.longitude];
-    updateWeather(para);
-  });
+  navigator.geolocation.getCurrentPosition(
+    (res) => {
+      const para = [res.coords.latitude, res.coords.longitude];
+      updateWeather(para);
+    },
+    (err) => {
+      alert(
+        "To view the current weather for your location, please enable location access on your device"
+      );
+      locationName.placeholder = "Type location here";
+    }
+  );
 };
 
 const updateWeather = async function (para) {
