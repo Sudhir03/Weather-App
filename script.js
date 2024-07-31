@@ -34,7 +34,7 @@ const getWeatherHandler = function () {
 };
 
 const getWeather = async function (query) {
-  const url = `http://api.weatherapi.com/v1/current.json?key=7ec015de2e714f1d8e955815242907&q=${query}&aqi=no`;
+  const url = `https://api.weatherapi.com/v1/current.json?key=7ec015de2e714f1d8e955815242907&q=${query}&aqi=no`;
   const res = await fetch(url);
   const result = await res.json();
   return result;
