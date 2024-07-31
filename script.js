@@ -2,6 +2,7 @@
 
 const locationName = document.getElementById("location");
 const searchBtn = document.getElementById("search");
+const icon = document.getElementById("w-icon");
 const temperature = document.getElementById("temperature");
 const summary = document.getElementById("summary");
 const feelsLike = document.getElementById("feels-like");
@@ -14,30 +15,37 @@ const currentPosition = function () {
 };
 
 const updateWeather = async function (para) {
-  let result;
+  let res;
   if (typeof para == "object") {
     const query = para.join(",");
-    result = await getWeather(query);
+    res = await getWeather(query);
   } else {
-    result = await getWeather(para);
+    res = await getWeather(para);
   }
 
-  locationName.value = result.location.name;
-  temperature.textContent = roundValues(result.current.temp_c);
-  summary.textContent = result.current.condition.text;
-  feelsLike.textContent = roundValues(result.current.feelslike_c);
+  if (res.status === 200) {
+    const result = await res.json();
+    locationName.value = result.location.name;
+    icon.src = result.current.condition.icon;
+    temperature.textContent = roundValues(result.current.temp_c);
+    summary.textContent = result.current.condition.text;
+    feelsLike.textContent = roundValues(result.current.feelslike_c);
+  } else {
+    alert("No data for this location");
+  }
 };
 
 const getWeatherHandler = function () {
-  const para = document.getElementById("location").value;
-  updateWeather(para);
+  const location = locationName.value;
+  locationName.value = "";
+  updateWeather(location);
 };
 
 const getWeather = async function (query) {
   const url = `https://api.weatherapi.com/v1/current.json?key=7ec015de2e714f1d8e955815242907&q=${query}&aqi=no`;
+
   const res = await fetch(url);
-  const result = await res.json();
-  return result;
+  return res;
 };
 
 const roundValues = function (fractionalVal) {

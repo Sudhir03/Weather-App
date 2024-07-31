@@ -44,6 +44,11 @@ input:focus {
   height: 50vh;
 }
 
+#icon {
+  height: 6.4rem;
+  display: inline-block;
+}
+
 #temperature {
   color: #fff;
   font-size: 10rem;
