@@ -40,6 +40,7 @@ const updateWeather = async function (para) {
     feelsLike.textContent = roundValues(result.current.feelslike_c);
   } else {
     alert("No data for this location");
+    locationName.placeholder = "Type location here";
   }
 };
 
